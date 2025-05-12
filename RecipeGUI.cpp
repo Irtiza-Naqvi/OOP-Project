@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
+
 using namespace std;
 
 struct Recipe {
@@ -16,7 +17,6 @@ int main() {
     sf::Font font;
     if (!font.loadFromFile("arial.ttf")) {
         cout << "Failed to load font.\n";
-        system("pause");
         return 1;
     }
 
@@ -75,6 +75,7 @@ int main() {
             if (event.type == sf::Event::Closed)
                 window.close();
 
+            // Handle input for Add, Search, Edit, Delete
             if ((inputMode || searchMode || editMode || deleteMode) && event.type == sf::Event::TextEntered) {
                 if (event.text.unicode == '\b') {
                     if (!currentInput.empty())
@@ -163,6 +164,7 @@ int main() {
                 }
             }
 
+            // Button Clicks
             if (!inputMode && event.type == sf::Event::MouseButtonPressed) {
                 auto mouse = sf::Mouse::getPosition(window);
                 for (int i = 0; i < 6; i++) {
@@ -211,6 +213,7 @@ int main() {
                 viewMode = false;
         }
 
+        // Drawing
         window.clear(sf::Color::White);
 
         if (viewMode) {
