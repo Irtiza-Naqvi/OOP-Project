@@ -1,7 +1,7 @@
 all: compile link
 
 compile:
-	g++ -IC:/Users/HP/Documents/SFML/src/include -c RecipeGUI.cpp Recipe.cpp
+	g++ -IC:/Users/HP/Documents/SFML/src/include -c RecipeGUI.cpp
 
 link:
-	g++ RecipeGUI.o Recipe.o -o recipe-gui-app -LC:/Users/HP/Documents/SFML/src/lib -lsfml-graphics -lsfml-window -lsfml-system -Wl,-subsystem,console
+	g++ RecipeGUI.o -o recipe-gui-app -LC:/Users/HP/Documents/SFML/src/lib -lsfml-graphics -lsfml-window -lsfml-system -static-libgcc -static-libstdc++ -Wl,--subsystem,windows
